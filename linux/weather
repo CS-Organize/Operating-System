@@ -1,0 +1,22 @@
+#!/bin/bash
+
+case $1 in
+-h | --help)
+	echo "Usage: weather [option]"
+	echo ""
+	echo "Options:"
+	echo "  -h, --help		Display this help message"
+	echo "  -3			Display the current weather in 3-day forecast"
+	echo "  -l, --location	Display the current weather in the specified location"
+	;;
+-3)
+	curl "wttr.in"
+	;;
+-l | --location)
+	curl "wttr.in/$2"
+	;;
+*)
+	curl "wttr.in/$1?m1"
+	;;
+esac
+

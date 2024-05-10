@@ -1,0 +1,168 @@
+#!/bin/bash
+
+# #!(shebang) : 실행시킬 interpreter program을 지정해주는 것
+
+# --------io--------
+
+# read -p "Enter your name: " NAME
+# echo "Hello, $NAME. Let's be friends!"
+
+# -----Variables-----
+
+# a-z, A-Z, 0-9, _ 만 사용 가능
+# $변수명 혹은 ${변수명} 으로 사용
+# 변수를 상수로 사용하고 싶을 때는 readonly 변수명 을 사용
+# unset 변수명 을 사용하면 변수를 삭제할 수 있음
+
+# var="variable1"
+# VaR_2="variable2"
+# echo "VaR_2: $VaR_2"
+
+# VaR_2="VaR_2 is changed"
+# echo ${VaR_2}
+
+# readonly var
+# var="variable1 is changed"
+
+# ----Special Variables----
+
+# $0 : 현재 실행되고 있는 스크립트 파일의 이름
+# $1~$9 : 스크립트에 전달된 인자(argument)들
+# $# : 스크립트에 전달된 인자들의 개수
+# $* : 스크립트에 전달된 모든 인자들을 하나의 문자열로 반환
+# $@ : 스크립트에 전달된 모든 인자들을 각각의 처리
+# $? : 직전에 실행한 명령어의 종료 상태 반환
+# $$ : 현재 스크립트의 프로세스 번호
+# $! : 백그라운드로 실행된 마지막 프로세스의 프로세스 번호
+
+# echo "\$0（스크립트 명）: $0"
+# echo "\$1（1번째 인수）: $1"
+# echo "\$2（2번째 인수）: $2"
+# echo "\$#（인수의 수）: $#"
+# echo "\"\$*\": \"$*\""
+# echo "\"\$@\": \"$@\""
+# VAR="exit값은0이 될 것이다."
+# echo $?
+
+# ----Replacement----
+
+# ${var} : 변수의 값을 반환
+# ${var:-word} : 변수가 아직 세팅되지 않거나 공백 문자열의 경우 word를 반환한다. var에는 저장되지 않는다.
+# ${var:=word} : 변수가 아직 세팅되지 않거나 공백 문자열의 word를 반환한다. var에 저장된다.
+# ${var:?word} : 변수가 아직 세팅되지 않거나 공백 문자열의 경우 word를 stderr로 출력 후 스크립트를 종료한다.
+# ${var:+word} : 변수가 세팅되어 있을 경우 word를 반환한다. var에는 저장되지 않는다.
+
+# echo "1 - ${var:-wordSetInEcho1}"
+# echo "2 - var = ${var}"
+# echo "3 - ${var:=wordSetInEcho3}"
+# echo "4 - var = ${var}"
+# unset var
+# echo "5 - ${var:+wordSetInEcho5}"
+# echo "6 - var = $var"
+# var="newVarValue"
+# echo "7 - ${var:+wordSetInEcho7}"
+# echo "8 - var = $var"
+# unset var
+# echo "9 - ${var:?StandardErrorMessage}"
+# echo "10 - var = ${var}"
+
+# ----Array----
+
+# 배열을 선언할 때는 declare -a arrayName 을 사용
+# arr=(value1 value2 value3) 와 같이 배열을 초기화할 수 있음
+# 배열의 요소에 접근할 때는 ${arrayName[index]} 를 사용
+# 배열의 모든 요소에 접근할 때는 ${arrayName[@]} 를 사용
+# 배열의 길이를 알고 싶을 때는 ${#arrayName[@]} 를 사용
+
+# declare -a arr
+# arr=(value1 value2 value3)
+# echo "arr[0]: ${arr[0]}"
+# echo "arr[1]: ${arr[1]}"
+# echo "arr[2]: ${arr[2]}"
+# arr[0]="first"
+# arr[1]="second"
+# arr[2]="third"
+# echo "arr: ${arr[@]}"
+# echo "arr: ${arr[*]}"
+# echo "arr length: ${#arr[@]}"
+# echo "arr length: ${#arr[*]}"
+
+# ----Operators----
+
+# -eq : EQual
+# -ne : Not Equal
+# -gt : Greater Than
+# -ge : Greater than or Equal
+# -lt : Less Than
+# -le : Less than or Equal
+# ! : Not
+# -o : OR
+# -a : AND
+# -z : Zero length
+# -n : Non-zero length
+
+# --------if--------
+
+# if [ "$1" -gt "$2" ]
+# then
+# 	echo "$1 is greater than $2"
+# elif [ "$1" -lt "$2" ]
+# then
+# 	echo "$1 is less than $2"
+# else
+# 	echo "$1 is equal to $2"
+# fi
+
+# --------case--------
+
+# read -p "What is your favorite drink? : " DRINK
+# case "$DRINK" in
+# 	"coffee" | "Coffee")
+# 		echo "Coffee is the best!"
+# 		;;
+# 	"tea" | "Tea")
+# 		echo "Tea is good for you!"
+# 		;;
+# 	*)
+# 		echo "I don't know what is $DRINK"
+# 		;;
+# esac
+
+# --------while--------
+
+# COUNTER=0
+# while [ $COUNTER -lt 10 ]
+# do 
+# 	echo "The counter is $COUNTER"
+# 	((COUNTER++))
+# done
+
+# --------until--------
+
+# COUNTER=10
+# until [ $COUNTER -lt 0 ]
+# do 
+# 	echo "The counter is $COUNTER"
+# 	((COUNTER--))
+# done
+
+# --------for--------
+
+# for i in {0..4}
+# do
+# 	echo "The counter is $i"
+# done
+
+# --------function--------
+
+MyFunction() {
+	echo "This is my first function"
+}
+MyParamFunction() {
+	echo "This is my first function with parameter: $1"
+}
+
+MyFunction
+MyParamFunction "Hello"
+
+# Reference : https://engineer-mole.tistory.com/200
