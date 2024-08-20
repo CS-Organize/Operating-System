@@ -22,8 +22,6 @@
 
 <img src="https://cdn.inflearn.com/public/courses/328823/cover/1081d7c2-64b4-4063-87f4-c40e11bb481f/KakaoTalk_20220517_140737840.jpg?w=736" alt="Inflearn" style="width:300px;"/>
 
-![]()
-
 전반적인 흐름을 빠르게 익힐 때 사용했습니다.
 
 ## Books
