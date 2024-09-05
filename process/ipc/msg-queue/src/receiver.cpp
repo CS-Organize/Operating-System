@@ -5,13 +5,15 @@
 #include <string.h>
 #include <sys/stat.h>
 
+const char* FILENAME = "/myqueue";
+
 int main()
 {
     mqd_t mq;
     char buffer[256];
 
     // 메시지 큐 열기
-    mq = mq_open("/myqueue", O_RDONLY);
+    mq = mq_open(FILENAME, O_RDONLY);
     if (mq == -1)
     {
         perror("mq_open");
@@ -29,6 +31,6 @@ int main()
 
     // 메시지 큐 닫기 및 삭제
     mq_close(mq);
-    mq_unlink("/myqueue");
+    mq_unlink(FILENAME);
     return 0;
 }
