@@ -56,6 +56,9 @@
     - [xargs](#xargs)
     - [grep](#grep)
     - [egrep](#egrep)
+    - [lsblk](#lsblk)
+    - [df](#df-1)
+    - [du](#du-1)
   - [Network](#network)
     - [ifconfig](#ifconfig)
   - [Process](#process)
@@ -590,6 +593,30 @@ grep -C<lines> # 검색 결과의 윗 줄과 아랫 줄을 출력합니다.
 ```bash
 > egrep [options] [pattern] [file or directory]
 egrep [abcdef]{2} <file> # character class
+```
+
+### lsblk
+
+`lsblk` command is used to list block devices
+
+```bash
+> lsblk
+```
+
+### df
+
+`df` command is used to show disk space usage
+
+```bash
+> df
+```
+
+### du
+
+`du` command is used to show disk usage
+
+```bash
+> du
 ```
 
 ## Network
